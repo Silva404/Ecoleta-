@@ -1,0 +1,34 @@
+#page-home {
+    height: 100vh;
+    background: url('../assets/home-background.svg') no-repeat 35vw bottom;   
+}
+
+main {
+    width: 50%;
+}
+
+
+main h1 {
+    font-size: 46px;
+}
+main p {
+    font-size: 20px;
+}
+
+main a {
+    display: flex;
+    margin-top: 30px;
+}
+
+main a strong{
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    border-radius: 0 8px 8px 0;
+    color: #f0f0f5;
+}
+main a span {
+    border-radius: 8px 0 0 8px;
+    padding: 35px;
+    background: var(--terciary-color) url(/assets/search.svg) no-repeat 25px;
+}
