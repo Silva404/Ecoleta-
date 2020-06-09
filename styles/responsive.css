@@ -1,3 +1,24 @@
 @media (max-width: 960px) {
-    
+    #page-home {
+        background-position-x: 70vw;        
+    }
+    #page-home header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between; 
+    }
+    #page-home header a {
+        position: absolute;
+        top: 90vh;
+    }
+    #page-home main {
+        text-align: center;
+    }
+    #page-home main p {
+        font-size: 20px;
+    }
+    #page-home main a {        
+        margin: 20px auto;
+    }
 }
