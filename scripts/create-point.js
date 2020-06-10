@@ -91,7 +91,13 @@ function handleSelectedItem(event) {
 
     // se já estiver selecionado, tirar da seleção
     // tipo um toggle só que com o valor
-
+    if (alreadySelected >= 0) {
+        const filteredItems = selectedItems.filter( item => {
+            const itemIsDifferent = item != itemId
+            return false
+        })
+    } 
+    ASSISTIR DE NOVO A LÓGICA DESDE OS 40MIN
 
     // se não tiver selecionado, adicionar a seleção
 
