@@ -1,0 +1,60 @@
+@media (max-width: 960px) {
+    form .field-group {
+        display: block;
+    }
+    form .field + .field {
+        margin-left: 0;
+    }
+    .itens-grid {    
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    form fieldset legend.warn {
+        display: block;
+
+        text-align: center;
+    }
+}
+
+@media (max-width: 450px) {
+    form {
+        padding: 40px;
+    }
+    form h1 {
+        font-size: 32px;
+        text-align: center;
+    }
+    #page-create-point header a {
+        font-size: 14px;
+        align-items: center;
+    }
+    form .field-group {
+        display: block;
+    }
+    form .field + .field {
+        margin-left: 0;
+    }
+    .itens-grid {    
+        list-style: none;
+        display: grid;
+        grid-template-columns:  1fr;
+        gap: 16px;
+    }    
+}
+@media (max-width: 380px) {
+    form {
+        padding: 20px;
+    }
+    header a span {
+        margin-right: 0;
+    }
+    header a strong {
+        width: 50px;
+    }
+}
