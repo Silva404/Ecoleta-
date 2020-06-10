@@ -35,16 +35,20 @@ function getCities(event) {
     // usando o ${} podemos usar apenas a ID de cada estado para sua cidade, um valor dinâmico
     const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`
 
+
+    //reescrever e limpar o conteudo interno das options city
     citySelect.innerHTML = ''
     citySelect.disabled = true;
         
+
     fetch(url)
         .then(response => response.json())
         .then(cities => {
             for (const city of cities) {
-                citySelect.innerHTML += `<option value='${city.id}'>${city.nome}</option>`
+                citySelect.innerHTML += `<option value='${city.nome}'>${city.nome}</option>`
             }
         })
+
 
     // propriedade para procurar a função disable do "input" de cidades e retira-lo para voltar a aparecer
     citySelect.disabled = false;
@@ -55,3 +59,16 @@ function getCities(event) {
 const stateElement = document
     .querySelector('select[name=uf]')
     .addEventListener('change', getCities)
+
+
+// adicionar classe de selecionada, nos itens de coleta
+const itemsToCollect = document.querySelectorAll('.itens-grid li')
+
+for (const item of itemsToCollect) {
+    item.addEventListener('click', handleSelectedItem)
+}
+
+function handleSelectedItem(event) {
+    const itemId = event.target.dataset.id
+    itemId.classList.add('selected')
+}

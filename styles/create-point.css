@@ -109,6 +109,7 @@ form button {
     font-weight: bold;
 
     transition: 400ms;
+    cursor: pointer;
 }
 
 form button:hover {
@@ -142,4 +143,9 @@ form button:hover {
 .itens-grid li.selected {
     background: #e1faec;
     border: 2px solid #34cb79;
+}
+
+.itens-grid li img,
+.itens-grid li span {
+    pointer-events: none;
 }
