@@ -65,7 +65,7 @@
                     <div class="field">
                         <label for="state">Estado</label>
                         <select name="uf" required>
-                            <option value="">Selecione o Estado</option>
+                            <option value="">Selecione o Estado</option> 
                         </select>
                     </div>
 
@@ -74,6 +74,7 @@
                         <select name="city" required>
                             <option value="" disabled>Selecione a Cidade</option>
                         </select>
+                        <input type="hidden" name="state">
                     </div>
                 </div>
 
@@ -122,6 +123,8 @@
             </form>
                
     </section>
+
+    <script src="/scripts/create-point.js"></script>
 </body>
 
 </html>
