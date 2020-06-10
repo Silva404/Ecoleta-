@@ -62,13 +62,39 @@ const stateElement = document
 
 
 // adicionar classe de selecionada, nos itens de coleta
+// selecionando todos os LI da classe grid para usar cada um no meu loop
 const itemsToCollect = document.querySelectorAll('.itens-grid li')
 
+// add ouvinte em cada item com seu click e add uma função.
 for (const item of itemsToCollect) {
     item.addEventListener('click', handleSelectedItem)
 }
 
+let selectedItems = []
+
 function handleSelectedItem(event) {
+    const itemLi= event.target
+
+    itemLi.classList.toggle('selected')
+
+    //adicionando valores em cada objeto para pegalos no backend e poder usalos
     const itemId = event.target.dataset.id
-    itemId.classList.add('selected')
+    
+    // verificar se existem items selecionados, se sim,  pegar os itens selecionados
+    const alreadySelected = selectedItems.findIndex( item => {
+        // const itemFound só é igual a item se ele o item for igual ao itemId, uma condição de true ou false 
+        item == itemId
+        //se for verdadeiro, ele retorna true, se não, false. 
+        // se ambas são true e false, posso colocar direto item == itemId
+    })
+
+
+    // se já estiver selecionado, tirar da seleção
+    // tipo um toggle só que com o valor
+
+
+    // se não tiver selecionado, adicionar a seleção
+
+
+    // atualizar o campo escondido com os dados selecionados
 }
