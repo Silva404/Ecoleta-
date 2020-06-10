@@ -39,7 +39,7 @@ function getCities(event) {
     //reescrever e limpar o conteudo interno das options city
     citySelect.innerHTML = ''
     citySelect.disabled = true;
-        
+
 
     fetch(url)
         .then(response => response.json())
@@ -73,34 +73,39 @@ for (const item of itemsToCollect) {
 let selectedItems = []
 
 function handleSelectedItem(event) {
-    const itemLi= event.target
+    const itemLi = event.target
 
     itemLi.classList.toggle('selected')
 
     //adicionando valores em cada objeto para pegalos no backend e poder usalos
-    const itemId = event.target.dataset.id
+    const itemId = itemLi.dataset.id
+
+
     
     // verificar se existem items selecionados, se sim,  pegar os itens selecionados
-    const alreadySelected = selectedItems.findIndex( item => {
-        // const itemFound só é igual a item se ele o item for igual ao itemId, uma condição de true ou false 
-        item == itemId
-        //se for verdadeiro, ele retorna true, se não, false. 
-        // se ambas são true e false, posso colocar direto item == itemId
+    const alreadySelected = selectedItems.findIndex(item => {
+        const itemIndex = item == itemId
+        return itemIndex
     })
-
 
     // se já estiver selecionado, tirar da seleção
     // tipo um toggle só que com o valor
     if (alreadySelected >= 0) {
-        const filteredItems = selectedItems.filter( item => {
-            const itemIsDifferent = item != itemId
-            return false
+        const filteredItems = selectedItems.filter(item => {
+            const itemFound = item != itemId
+            return itemFound
         })
-    } 
-    ASSISTIR DE NOVO A LÓGICA DESDE OS 40MIN
 
+        selectedItems = filteredItems
+    }
     // se não tiver selecionado, adicionar a seleção
+    else {
+        selectedItems.push(itemId)
+    }
+
+    console.log(selectedItems)
 
 
-    // atualizar o campo escondido com os dados selecionados
+
+    // atualizar o campo escondido com os dados selecionados 
 }
