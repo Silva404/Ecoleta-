@@ -2,6 +2,8 @@ const express = require('express')
 const server = express()
 
 // page home
+// req = requisition
+// res = response
 server.get('/', (req, res) => {
     res.send('eae mah')
 })
