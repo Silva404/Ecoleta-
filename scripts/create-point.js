@@ -70,6 +70,12 @@ for (const item of itemsToCollect) {
     item.addEventListener('click', handleSelectedItem)
 }
 
+
+
+ // constate pra armazenar meu input escondido, onde vou armazenar os dados do items nele
+ const collectedItems = document.querySelector('input[name=items]')
+
+
 let selectedItems = []
 
 function handleSelectedItem(event) {
@@ -81,7 +87,7 @@ function handleSelectedItem(event) {
     const itemId = itemLi.dataset.id
 
 
-    
+
     // verificar se existem items selecionados, se sim,  pegar os itens selecionados
     const alreadySelected = selectedItems.findIndex(item => {
         const itemIndex = item == itemId
@@ -102,10 +108,6 @@ function handleSelectedItem(event) {
     else {
         selectedItems.push(itemId)
     }
-
-    console.log(selectedItems)
-
-
-
-    // atualizar o campo escondido com os dados selecionados 
+     // atualizar o campo escondido com os dados selecionados 
+     collectedItems.value = selectedItems
 }
