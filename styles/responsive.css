@@ -1,6 +1,6 @@
 @media (max-width: 960px) {
     #page-home {
-        background-position-x: 70vw;        
+        background-position-x: 75vw;        
     }
     #page-home header {
         display: flex;
@@ -13,6 +13,8 @@
         top: 90vh;
     }
     #page-home main {
+        display: flex;
+        align-self: center;
         text-align: center;
     }
     #page-home main p {
@@ -20,5 +22,18 @@
     }
     #page-home main a {        
         margin: 20px auto;
+    }
+}
+
+@media (max-width: 580px) {
+    #page-home main h1 {
+        font-size: 40px;
+    }
+    #page-home  main p {
+        font-size: 16px;
+        margin-top: 18px;
+    }
+    #page-home  main a {
+        width: 70%;
     }
 }
