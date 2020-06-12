@@ -15,52 +15,38 @@
         {% include 'partials/page-header.html'%}
 
         <main>
-            <h4>
-                <strong>2 pontos</strong>
-                encontrados
-            </h4>
+            {% if total > 0 %}
+                <h4>
+                    <strong>{{ total }}
+                        pontos</strong>
+                    encontrados
+                </h4>
 
-            <div class="cards">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1525695230005-efd074980869?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="">
-                    <h1>Paperside</h1>
-                    <h4>Resíduos orgânicos, Lâmpadas</h4>
-                    <p>
-                        Fortaleza, Ceará
-                        <br>
-                        Rua 1082
-                        <br>
-                        N° 105
-                    </p>
+                <div class="cards">
+
+                    {% for place in places %}
+                        <div class="card">
+                            <img src="{{ place.image }}" alt="{{ place.name }}">
+                            <h1>{{ place.name }}</h1>
+                            <h4>{{ place.items }}</h4>
+                            <p>
+                                {{ place.city }},
+                                {{ place.state }}
+                                <br>
+                                {{ place.address }}
+                                <br>
+                                {{ place.address2 }}
+                            </p>
+                        </div>
+                    {% endfor %}
+
                 </div>
 
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1525695230005-efd074980869?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="">
-                    <h1>Paperside</h1>
-                    <h4>Resíduos orgânicos, Lâmpadas</h4>
-                    <p>
-                        Fortaleza, Ceará
-                        <br>
-                        Rua 1082
-                        <br>
-                        N° 105
-                    </p>
-                </div>
+                {# caso não tenha nenhum item no ambiente #}
+                {%else%}
+                <h1><strong>Nenhum</strong> local encontrado!</h1>
 
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1525695230005-efd074980869?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="">
-                    <h1>Paperside</h1>
-                    <h4>Resíduos orgânicos, Lâmpadas</h4>
-                    <p>
-                        Fortaleza, Ceará
-                        <br>
-                        Rua 1082
-                        <br>
-                        N° 105
-                    </p>
-                </div>
-            </div>
-
+            {% endif %}
         </main>
     </div>
 
