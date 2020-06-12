@@ -51,7 +51,7 @@ db.serialize(() => {
     //em caso de erro ou acerto, executar isso. COloquei pra expor meus dados.
     function afterInsertData(err) {
         if(err) {
-            console.log(err)
+            return console.log(err)
         }
 
         console.log('Cadastro efetuado com sucesso!')
@@ -62,9 +62,9 @@ db.serialize(() => {
     // db.run(query, values, afterInsertData)
 
     // consultar os dados
-    db.all(`SELECT * FROM places`, (err,rows) => {
+    db.all(`SELECT * FROM places`, function(err, rows) {
         if(err) {
-            console.log(err)
+            return console.log(err)
         }
 
         console.log('Aqui estão seus registros: ')
