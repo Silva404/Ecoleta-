@@ -1,12 +1,14 @@
-// importar a dependencia do sqlite
-const sqlite3 = require('sqlite3').verbose()
+// chamando a dependencia sqlite3
+const sqlite3 = require('sqlite3')
 
-//criar o objeto de banco de dados, para manuzea-lo
-const db = new sqlite3.Database('./src/database/database.db')
+// criando o database
+const db = new sqlite3.Database('src/database/database.db')
 
-// utilizar o banco de dados
+
+
+//usando o serialize para executar comandos em ordem, um esperando o outro
 db.serialize(() => {
-    // criar uma tabela
+    // criar a tabela
     db.run(`
         CREATE TABLE IF NOT EXISTS places (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -16,25 +18,26 @@ db.serialize(() => {
             address2 TEXT,
             state TEXT,
             city TEXT,
-            items TEXT
-        );
+            items
+        )  
     `)
 
-    // inserir dados na tabela
-    const query = `
-        INSERT INTO places (
-            image,
-            name,
-            address,
-            address2,
-            state,
-            city,
-            items
-            ) VALUES (
-                ?, ?, ?, ?, ?, ?, ?
-            );
- `
+    // inserir dados na table
 
+    // meu query é onde vou inserir os dados e seus respectivos nomes
+    const query = `
+    INSERT INTO places (
+        image,
+        name,
+        address,
+        address2,
+        state,
+        city,
+        items
+    ) VALUES (?,?,?,?,?,?,?)
+    `
+
+    // values = valores dos dados do query
     const values = [
         'https://images.unsplash.com/photo-1525695230005-efd074980869?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80',
         'Paperside',
@@ -45,19 +48,30 @@ db.serialize(() => {
         'Resíduos orgânicos, Lâmpadas'
     ]
 
+    //em caso de erro ou acerto, executar isso. COloquei pra expor meus dados.
     function afterInsertData(err) {
-        if (err) {
-            return console.log(err)
+        if(err) {
+            console.log(err)
         }
 
-        console.log('Cadastrado com sucesso!')
+        console.log('Cadastro efetuado com sucesso!')
         console.log(this)
     }
 
-
-    db.run(query, values, afterInsertData)
+    //  vai inserir dados ao ser executado
+    // db.run(query, values, afterInsertData)
 
     // consultar os dados
+    db.all(`SELECT * FROM places`, (err,rows) => {
+        if(err) {
+            console.log(err)
+        }
+
+        console.log('Aqui estão seus registros: ')
+        console.log(rows)
+    })
+
+
 
     // deletar
 })
