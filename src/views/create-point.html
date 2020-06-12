@@ -1,127 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'layout.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&Ubuntu:ital,wght@0,500;0,700;1,300&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="../styles/main.css">
+{% block styles %}
     <link rel="stylesheet" href="../styles/create-point.css">
     <link rel="stylesheet" href="../styles/responsive-create-point.css">
-    
+{% endblock styles %}
 
+{% block title %}
     <title>Criando ponto de coleta</title>
-</head>
+{% endblock title %}
 
-<body>
-    <section id="page-create-point">
+{% set pageId = 'page-create-point' %}
 
-            {% include 'partials/page-header.html'%}
+{% block content %}
+    {% include 'partials/page-header.html'%}
 
-            <form action="">
-                <h1>Cadastro do ponto de coleta</h1>
-                <fieldset>
-                    <legend>
-                        <h2>Dados da entidade</h2>
-                    </legend>
-                </fieldset>
+    <form action="">
+        <h1>Cadastro do ponto de coleta</h1>
+        <fieldset>
+            <legend>
+                <h2>Dados da entidade</h2>
+            </legend>
+        </fieldset>
 
+        <div class="field-group">
+            <div class="field">
+                <label for="name">Nome da entidade</label>
+                <input type="text" name="name" required="required">
+            </div>
 
-                <div class="field-group">
-                    <div class="field">
-                        <label for="name">Nome da entidade</label>
-                        <input type="text" name="name" required>
-                    </div>
+            <div class="field">
+                <label for="image">Imagem da entidade</label>
+                <input type="url" name="image" placeholder="https://..." required="required">
+            </div>
+        </div>
 
-                    <div class="field">
-                        <label for="image">Imagem da entidade</label>
-                        <input type="text" name="image" required>
-                    </div>
-                </div>
+        <div class="field-group">
+            <div class="field">
+                <label for="address">Endereço</label>
+                <input type="text" name="address" required="required">
+            </div>
 
+            <div class="field">
+                <label for="address2">Número/Complemento</label>
+                <input type="number" name="address2" required="required">
+            </div>
+        </div>
 
-                <div class="field-group">
-                    <div class="field">
-                        <label for="address">Endereço</label>
-                        <input type="text" name="address" required>
-                    </div>
+        <div class="field-group">
+            <div class="field">
+                <label for="state">Estado</label>
+                <select name="uf" required="required">
+                    <option value="">Selecione o Estado</option>
+                </select>
+            </div>
 
-                    <div class="field">
-                        <label for="address2">Número/Complemento</label>
-                        <input type="number" name="address2" required>
-                    </div>
-                </div>
+            <div class="field">
+                <label for="city">Cidade</label>
+                <select name="city" required="required">
+                    <option value="" disabled="disabled">Selecione a Cidade</option>
+                </select>
+                <input type="hidden" name="state">
+            </div>
+        </div>
 
-                
-                <div class="field-group">
-                    <div class="field">
-                        <label for="state">Estado</label>
-                        <select name="uf" required>
-                            <option value="">Selecione o Estado</option> 
-                        </select>
-                    </div>
+        <fieldset>
+            <legend class="warn">
+                <h2>Itens de coleta</h2>
+                <span>Selecione um ou mais itens abaixo</span>
+            </legend>
 
-                    <div class="field">
-                        <label for="city">Cidade</label>
-                        <select name="city" required>
-                            <option value="" disabled>Selecione a Cidade</option>
-                        </select>
-                        <input type="hidden" name="state">
-                    </div>
-                </div>
+            <div class="itens-grid">
+                <li data-id="Lâmpadas">
+                    <img src="/assets/lampadas.svg" alt="Lâmpadas">
+                    <span>Lâmpadas</span>
+                </li>
 
-                <fieldset>
-                    <legend class="warn">
-                        <h2>Itens de coleta</h2>
-                        <span>Selecione um ou mais itens abaixo</span>
-                    </legend>
+                <li data-id="Pilhas e Baterias">
+                    <img src="/assets/baterias.svg" alt="Pilhas e Baterias">
+                    <span>Pilhas e Baterias</span>
+                </li>
 
-                    <div class="itens-grid">
-                        <li data-id="Lâmpadas">
-                            <img src="/assets/lampadas.svg" alt="Lâmpadas">
-                            <span>Lâmpadas</span>
-                        </li>
+                <li data-id="Papéis de Papelão">
+                    <img src="/assets/papeis-papelao.svg" alt="Papéis de Papelão">
+                    <span>Papéis de Papelão</span>
+                </li>
 
-                        <li data-id="Pilhas e Baterias">
-                            <img src="/assets/baterias.svg" alt="Pilhas e Baterias">
-                            <span>Pilhas e Baterias</span>
-                        </li>
+                <li data-id="Resíduos Eletrônicos">
+                    <img src="/assets/eletronicos.svg" alt="Resíduos Eletrônicos">
+                    <span>Resíduos Eletrônicos</span>
+                </li>
 
-                        <li data-id="Papéis de Papelão">
-                            <img src="/assets/papeis-papelao.svg" alt="Papéis de Papelão">
-                            <span>Papéis de Papelão</span>
-                        </li>
+                <li data-id="Resíduos Orgânicos">
+                    <img src="/assets/organicos.svg" alt="Resíduos Orgânicos">
+                    <span>Resíduos Orgânicos</span>
+                </li>
 
-                        <li data-id="Resíduos Eletrônicos">
-                            <img src="/assets/eletronicos.svg" alt="Resíduos Eletrônicos">
-                            <span>Resíduos Eletrônicos</span>
-                        </li>
+                <li data-id="Óleo de Cozinha">
+                    <img src="/assets/oleo.svg" alt="Óleo de Cozinha">
+                    <span>Óleo de Cozinha</span>
+                </li>
+            </div>
 
-                        <li data-id="Resíduos Orgânicos">
-                            <img src="/assets/organicos.svg" alt="Resíduos Orgânicos">
-                            <span>Resíduos Orgânicos</span>
-                        </li>
+            <input type="hidden" name="items">
 
-                        <li data-id="Óleo de Cozinha">
-                            <img src="/assets/oleo.svg" alt="Óleo de Cozinha">
-                            <span>Óleo de Cozinha</span>
-                        </li>                        
-                    </div>
+        </fieldset>
 
-                    <input type="hidden" name="items">
+        <button type="submit">Cadastrar ponto de coleta</button>
 
-                </fieldset>
+    </form>
+{% endblock content %}
 
-                <button type="submit">Cadastrar ponto de coleta</button>
-
-            </form>
-               
-    </section>
+{% block script %}
 
     <script src="/scripts/create-point.js"></script>
-</body>
-
-</html>
+{% endblock script %}
