@@ -17,7 +17,7 @@ To run this project in development mode locally, you'll need to have a few depen
 * Nunjucks 3.2.1
 * Sqlite 4.2.0
 
-- Dev dependencie
+Dev dependencie
 * Nodemon
 
 OS & Linux: 
@@ -27,11 +27,9 @@ sudo apt-get install -y nodejs
 ```
 npm install express
 ```
-
 ```
 npm install sqlite3
 ```
-
 ```
 npm install nunjucks
 ```
