@@ -77,6 +77,15 @@
 }
 
 #modal.point .content {
+    width: 500px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+#modal.point h1 {
+    color: #fff;
+    font-size: 48px;
+
+    margin-top: 20px;
 }
