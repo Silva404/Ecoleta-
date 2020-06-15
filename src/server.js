@@ -36,7 +36,61 @@ server.get('/create-point', (req, res) => {
 })
 
 server.post('/savepoint', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
+
+    // inserir dados no banco de dados
+    // criar a tabela
+    db.run(`
+        CREATE TABLE IF NOT EXISTS places (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            image TEXT,
+            name TEXT,
+            address TEXT,
+            address2 TEXT,
+            state TEXT,
+            city TEXT,
+            items
+        )  
+    `)
+
+    // inserir dados na table
+
+    // meu query é onde vou inserir os dados e seus respectivos nomes
+    const query = `
+    INSERT INTO places (
+        image,
+        name,
+        address,
+        address2,
+        state,
+        city,
+        items
+    ) VALUES (?,?,?,?,?,?,?)
+    `
+
+    // values = valores dos dados do query
+    const values = [
+        req.body.image,
+        req.body.name,
+        req.body.address,
+        req.body.address2,
+        req.body.state,
+        req.body.city,
+        req.body.items
+    ]
+
+    //em caso de erro ou acerto, executar isso. COloquei pra expor meus dados.
+    function afterInsertData(err) {
+        if(err) {
+            return console.log(err)
+        }
+
+        console.log('Cadastro efetuado com sucesso!')
+        console.log(this)
+    }
+
+    //  vai inserir dados ao ser executado
+    db.run(query, values, afterInsertData)
 
 
     return res.send('oi')
