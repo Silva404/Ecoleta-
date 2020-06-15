@@ -7,7 +7,7 @@ const db = new sqlite3.Database('src/database/database.db')
 
 module.exports = db
 //usando o serialize para executar comandos em ordem, um esperando o outro
-db.serialize(() => {
+// db.serialize(() => {
     // criar a tabela
     // db.run(`
     //     CREATE TABLE IF NOT EXISTS places (
@@ -86,4 +86,4 @@ db.serialize(() => {
     //     console.log('Registro deletado com sucesso')
     // })   
 
-})
+// })
