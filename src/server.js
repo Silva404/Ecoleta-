@@ -84,16 +84,14 @@ server.post('/savepoint', (req, res) => {
         if(err) {
             return console.log(err)
         }
-
         console.log('Cadastro efetuado com sucesso!')
         console.log(this)
+
+        return res.render('create-point.html', { saved: true})        
     }
 
     //  vai inserir dados ao ser executado
     db.run(query, values, afterInsertData)
-
-
-    return res.send('oi')
 })
 
 
